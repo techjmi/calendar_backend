@@ -9,6 +9,11 @@ const event_rouet= require('./routes/event_routes')
 
 connectDB() 
 app.use(cors())
+app.use(cors({
+    origin: 'https://calendar-8nsa.onrender.com',  // Allow requests from this specific origin
+    methods: 'GET,POST,PUT,DELETE', // Specify allowed HTTP methods
+    credentials: true // Enable credentials if needed
+  }));
 app.use(express.json())
 app.use('/calendar', event_rouet)  
 app.listen(PORT,()=>{
